@@ -18,6 +18,7 @@ public:
         int u = it.first, v = it.second;
         u--;
         v--;
+        
         if (!(mask & (1 << u)) and !(mask & (1 << v)))
         {
           ok = false;
