@@ -1,50 +1,33 @@
-// Min distance between two given nodes of a Binary Tree
-// https://www.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1
-
+// 451. Sort Characters By Frequency
+// https://leetcode.com/problems/sort-characters-by-frequency/
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
-    int data;
-    Node* left, * right;
-}; 
+class Solution {
+public:
+    string frequencySort(string s) {
+        unordered_map<char, int> mp;
+        priority_queue<pair<int, char>> pq;
+        string ans = "";
 
-class Solution{
-    public:
-    /* Should return minimum distance between a and b
-    in a tree with given root*/
-    Node* lowestCommonAncestor(Node* root, int p, int q) {
-        if (!root || root->data == p || root->data == q) return root;
+        // count character frequency
+        for(auto ch: s){
+            mp[ch]++;
+        }
 
-        Node* left = lowestCommonAncestor(root->left, p, q);
-        Node* right = lowestCommonAncestor(root->right, p, q);
+        // push to heap to sort characters in highest frequency first
+        for(auto i: mp){
+            pq.push({i.second, i.first});
+        }
+
+        // add to final answer string from the heap till it's empty
+        while(!pq.empty()){
+            pair<int, char> cur = pq.top();
+            pq.pop();
+            while(cur.first--) ans += cur.second;
+        }
         
-        if (left && right) return root;
-        
-        return left ? left : right;
-    }
-    
-    int distanceFromRoot(Node* root, int x) {
-        if (!root) return -1;
-        if (root->data == x) return 0;
-        
-        int leftDist = distanceFromRoot(root->left, x);
-        int rightDist = distanceFromRoot(root->right, x);
-        
-        if (leftDist != -1) return leftDist + 1;
-        if (rightDist != -1) return rightDist + 1;
-        
-        return -1;
-    }
-    
-    int findDist(Node* root, int a, int b) {
-        Node* lca = lowestCommonAncestor(root, a, b);
-        
-        int distA = distanceFromRoot(lca, a);
-        int distB = distanceFromRoot(lca, b);
-        
-        return distA + distB;
+        return ans;
     }
 };
 
