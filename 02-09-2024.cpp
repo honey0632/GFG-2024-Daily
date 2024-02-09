@@ -1,5 +1,5 @@
-//
-//
+// Check for Children Sum Property in a Binary Tree
+// https://www.geeksforgeeks.org/problems/children-sum-parent/1
 
 #include <bits/stdc++.h>
 using namespace std;
