@@ -12,7 +12,7 @@ class Solution {
         pq.push({0, src});
         
         while(!pq.empty()) {
-            auto node = pq.top().second;
+            auto node = pq.top().second ;
             auto nodeDist = pq.top().first;
             pq.pop();
             
