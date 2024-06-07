@@ -11,6 +11,7 @@ class Solution {
     // n: size of array
     // arr[] : declared globally with size equal to maximum in l[] and r[]
     // Function to find the maximum occurred integer in all ranges.
+    
     int maxOccured(int n, int l[], int r[], int maxx) {
 
         vector<int> pref(maxx+2,0);
