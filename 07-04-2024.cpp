@@ -4,14 +4,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
-    string data;
-    Node* next;
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
 
-    Node(int x){
+    Node(int x) {
         data = x;
-        next = NULL;
+        left = NULL;
+        right = NULL;
     }
 };
 
