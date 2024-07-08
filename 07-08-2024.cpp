@@ -1,0 +1,40 @@
+// Search in Rotated Sorted Array
+// https://www.geeksforgeeks.org/problems/search-in-a-rotated-array4618/1
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int search(vector<int>& arr, int key) {
+        // complete the function here
+        int start=0;
+        int end = arr.size()-1;
+        while(start<=end){
+            int mid = start + (end - start)/2;
+            if(arr[mid]==key) return mid;
+            if(arr[start]<=arr[mid]){
+                if(arr[start]<= key && key<=arr[mid]){
+                    end = mid - 1;
+                }
+                else{
+                    start = mid + 1;
+                }
+            }
+            else{
+                if(arr[mid]<= key && key<=arr[end]){
+                    start = mid + 1;
+                }
+                else{
+                    end = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+int main () {
+    
+     return 0;
+}
