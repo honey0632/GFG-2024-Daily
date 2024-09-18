@@ -1,30 +1,29 @@
-// 884. Uncommon Words from Two Sentences
-// https://leetcode.com/problems/uncommon-words-from-two-sentences/
+// Minimize the Heights II
+// https://www.geeksforgeeks.org/problems/minimize-the-heights3351/1
 
 #include<bits/stdc++.h>
 using namespace std;
 
 class Solution {
-public:
-    map<string,int>mp;
-    
-    void string_stream(string s)
-    {
-        stringstream ss(s);
-        string word;
-        while(ss>>word) mp[word]++;
-    }
-
-    vector<string> uncommonFromSentences(string s1, string s2) 
-    {
-        string_stream(s1);
-        string_stream(s2);
-
-        vector<string>ans;
-        for(auto x:mp)
-            if(x.second==1) 
-                ans.push_back(x.first);
-
+  public:
+    int getMinDiff(vector<int> &arr, int k) {
+        // code here
+        int n = arr.size();
+        sort(arr.begin(),arr.end());
+        int ans = arr[n-1]-arr[0];
+        
+        for(int i=0 ; i<n-1 ; i++){
+            int mini = min(arr[0]+k , arr[i+1]-k);
+            int maxi = max(arr[n-1]-k , arr[i]+k);
+            
+            if(mini<0){
+                continue;
+            }
+        
+            
+            ans = min(ans , maxi - mini);
+            
+        }
         return ans;
     }
 };
